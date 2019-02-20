@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.concurrent.CountDownLatch;
 
-/**
+/** 测试类tomcat7、8  来源：视频
  * @author 徐其伟
  * @Description:
  * @date 2019/2/14 15:39
