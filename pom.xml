@@ -6,7 +6,11 @@
 
     <groupId>com.xqw.study</groupId>
     <artifactId>study-test</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+    <modules>
+        <module>iText</module>
+    </modules>
 
     <dependencies>
         <dependency>
