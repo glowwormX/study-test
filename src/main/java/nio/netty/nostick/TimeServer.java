@@ -31,7 +31,7 @@ public class TimeServer {
             sbs.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 1024)
-                    .childHandler(new ChildChannnelHandler());
+                    .childHandler(new ChildChannelHandler());
             //绑定端口，同步等待成功
             ChannelFuture cf = sbs.bind(port).sync();
 
@@ -46,7 +46,7 @@ public class TimeServer {
         }
     }
 
-    private class ChildChannnelHandler extends ChannelInitializer<SocketChannel> {
+    private class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
         protected void initChannel(SocketChannel socketChannel) throws Exception {
             /********添加解码器*/
             socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
@@ -69,9 +69,9 @@ public class TimeServer {
 //                String body = new String(req, "UTF-8");
                 System.out.println("body : " + body + "count : " + ++count);
 
-                String res = new Date(System.currentTimeMillis()).toString();
+                String res = new Date(System.currentTimeMillis()) + System.getProperty("line.separator");
                 ByteBuf resBytes = Unpooled.copiedBuffer(res.getBytes());
-                ctx.write(resBytes);
+                ctx.writeAndFlush(resBytes);
             }
 
             @Override
